@@ -1,0 +1,80 @@
+#include <stdio.h>
+
+void menu ();
+void moltiplica ();
+void dividi ();
+void ins_string();
+
+
+int main ()
+
+{
+	char scelta = {'\0'};
+	menu ();
+	scanf ("%d", &scelta); //per variabili char va utilizzato %c
+
+	switch (scelta)
+	{
+		/*Per migliorare la user experience a ogni case si potrebbe aggiundere "|| 'lettera minuscola'" così da coprire entrambe le variazioni */
+		case 'A':
+		moltiplica();
+		break;
+		case 'B':
+                dividi();
+                break;
+		case 'C':
+                ins_string();
+                break;
+	}
+
+return 0;
+
+}
+
+
+void menu ()
+{
+	printf ("Benvenuto, sono un assitente digitale, posso aiutarti a sbrigare alcuni compiti\n");
+	printf ("Come posso aiutarti?\n");
+	printf ("A >> Moltiplicare due numeri\nB >> Dividere due numeri\nC >> Inserire una stringa\n");
+}
+
+
+void moltiplica ()
+{
+	short int  a,b = 0; /*se b=0 non è possibile inserire un secondo numero diverso da 0, in più distinguirei i valori in a1/b1 così da non conforderli con quelli inseriti successivamente
+	e non dover utilizzare short int*/
+	printf ("Inserisci i due numeri da moltiplicare:"); /*A tutti i printf di questa sessione andrebbe messo alla fine "\n" così da staccare le varie righe */
+	scanf ("%f", &a); //per la variabile int si usa il %d
+	scanf ("%d", &b);
+
+	short int prodotto = a * b; /*la variabile sarebbe "prodotto" meglio specificarla sopra e lasciare questa riga solo con la formula*/ 
+
+	printf ("Il prodotto tra %d e %d e': %d", a,b,prodotto);
+}
+
+
+void dividi ()
+{
+
+        int  a,b = 0; /* b=0 non permette l'inserimento di un secondo numero diverso da 0 e specificherei i valorei in a2/b2 */
+	printf ("Inserisci il numeratore:"); /*A tutti i printf di questa sessione andrebbe messo alla fine "\n" così da staccare le varie righe */
+        scanf ("%d", &a);
+	printf ("Inserisci il denumeratore:");
+        scanf ("%d", &b);
+
+        int divisione = a % b; /*anche qui la variabile "divisione" era meglio specificarla sopra lasciando solo la formula*/
+
+        printf ("La divisione tra %d e %d e': %d", a,b,divisione);
+}
+
+
+
+
+
+void ins_string ()
+{
+	char stringa[10];
+        printf ("Inserisci la stringa:");
+        scanf ("%s", &stringa);
+}
